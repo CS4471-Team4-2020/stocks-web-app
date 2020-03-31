@@ -34,8 +34,8 @@ namespace StocksWebApp.Controllers
         public IActionResult Index()
         {
             DateTime start = new DateTime(2011,1,13,0,0,0);
-            DateTime end = new DateTime(2011,4,13,23,59,59);
-            string company = "nymx";
+            DateTime end = new DateTime(2011,1,13,23,59,59);
+            string company = "ctcm";
 
             var obj = GetContentAsync(company,start, end).Result;
             obj.CompanyDict = companies;
@@ -44,10 +44,6 @@ namespace StocksWebApp.Controllers
         [HttpPost]
         public IActionResult Update(string Company, string StartDate, string EndDate)
         {
-            /*dynamic jsonObj = JsonConvert.DeserializeObject(data);
-            string Company = jsonObj.Company;
-            string StartDate = jsonObj.StartDate;
-            string EndDate = jsonObj.EndDate;*/
             var startDateObj = DateTime.ParseExact(StartDate, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
             var endDateObj = DateTime.ParseExact(EndDate, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
             var obj = GetContentAsync(Company, startDateObj, endDateObj).Result;

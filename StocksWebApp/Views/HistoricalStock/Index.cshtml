@@ -1,31 +1,45 @@
 ﻿@model HistoricalStockViewModel
 <link rel="stylesheet" type="text/css" href="~/css/chartist-plugin-tooltip.css" />
 <link rel="stylesheet" href="~/css/chartist.min.css" />
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="~/js/chartist.min.js"></script>
 <script src="~/js/chartist-plugin-tooltip.js"></script>
+
+@*Populate the company selector*@
 <div>
     <select id="companySelect">
-        @foreach(var companyKey in Model.CompanyDict.Keys)
+        @foreach (var companyKey in Model.CompanyDict.Keys)
         {
-        <option value="@companyKey">@Model.CompanyDict[companyKey]</option>
+            <option value="@companyKey">@Model.CompanyDict[companyKey]</option>
         }
     </select>
 </div>
+
+@*Buttons for choosing date range*@
 <div>
     <button type="button" class="date-button" value="0">1 Day</button>
     <button type="button" class="date-button" value="1">1 Month</button>
     <button type="button" class="date-button" value="2">3 Months</button>
     <button type="button" class="date-button" value="3">6 Months</button>
     <button type="button" class="date-button" value="4">1 Year</button>
-    <button type="button" class="date-button" value="5">Custom</button>
-    <input type="text" id="datepicker" />
+    @*Choose own date range*@
+    <span>Custom Range</span>
+    <input type="text" class="date-pick" id="startDate" />
+    <input type="text" class="date-pick" id="endDate" />
+    <button type="button" class="date-button" value="5">Submit</button>
 </div>
-<div class="ct-chart" style="position:relative;"></div>
-<script>
-    function refreshTable(company, startDate, endDate) {
 
+@*Div that contains the chart*@
+<div class="ct-chart" style="position:relative;"></div>
+
+<script>
+    //Updates the chart with the new data
+    function refreshTable(company, startDate, endDate) {
         var reqData = { Company: company, StartDate: dateString(startDate), EndDate: dateString(endDate) }
+        //Make POST request to controller to get new data
         $.ajax({
         type: "POST",
             url: "/HistoricalStock/Update",
@@ -43,6 +57,8 @@
                         }
                     }
                 };
+
+                //Empty chart and create new one
                 $('.ct-chart').empty();
                 new Chartist.Line('.ct-chart', newData, newoptions);
 
@@ -50,12 +66,13 @@
     });
     }
 
+    //Format Date object as string
     function dateString(date) {
         var day = date.getDate().toString().padStart(2,'0');       // yields date
         var month = date.getMonth() + 1;
         month = month.toString().padStart(2, '0');// yields month (add one as '.getMonth()' is zero indexed)
         var year = date.getFullYear();  // yields year
-        var hour = date.getHours().toString().padStart(2,'0');     // yields hours 
+        var hour = date.getHours().toString().padStart(2,'0');     // yields hours
         var minute = date.getMinutes().toString().padStart(2,'0'); // yields minutes
         var second = date.getSeconds().toString().padStart(2,'0'); // yields seconds
 
@@ -64,30 +81,54 @@
         return time;
     }
 
+    //Initialize datepicker listener
+    $('.date-pick').datepicker({ changeMonth: true, changeYear: true });
+
+    //Initialize company select listener
+    $("#companySelect").change(function () {
+        //After changing company, update chart with 1 day range for that company
+        var startDate = new Date(2011, 0, 13);
+        var endDate = new Date(2011, 0, 13, 23, 59, 59);
+        var company = $('#companySelect').val();
+        refreshTable(company, startDate, endDate);
+    });
+
+    //Initialize daterange button listener
     $('.date-button').on("click", function ()
     {
-        console.log($(this).val());
+        //Default start date except for custom date range
         var startDate = new Date(2011, 0, 13);
         var endDate;
 
-        console.log(startDate);
-        var valu = parseInt($(this).val()); 
+        var valu = parseInt($(this).val());
         switch (valu)
         {
+            //1 day range
             case 0:
                 endDate = new Date(2011, 0, 13, 23, 59, 59);
                 break;
+            //1 month range
             case 1:
                 endDate = new Date(2011, 1, 13, 23, 59, 59);
                 break;
+            //3 month range
             case 2:
                 endDate = new Date(2011, 3, 13, 23, 59, 59);
                 break;
+            //6 month range
             case 3:
                 endDate = new Date(2011, 6, 13, 23, 59, 59);
                 break;
+            //1 year range
             case 4:
                 endDate = new Date(2011, 11, 13, 23, 59, 59);
+                break;
+            //Custom range
+            case 5:
+                var startDateNums = $('#startDate').val().split('/');
+                startDate = new Date(startDateNums[2], startDateNums[0]-1, startDateNums[1], 0, 0, 0);
+                var endDateNums = $('#endDate').val().split('/');
+                endDate = new Date(endDateNums[2], endDateNums[0]-1, endDateNums[1], 23, 59, 59);
                 break;
 
         };
@@ -95,6 +136,7 @@
         refreshTable(company, startDate, endDate);
     });
 
+    //Create table on initial page load
     var labelData = [];
     var seriesData = [];
     @foreach (var label in Model.Dates)
@@ -107,15 +149,15 @@
     }
     console.log(labelData);
     var data = {
-        labels: labelData,//[124, 126, 326, 74, 347],
-                            // Our series array that contains series objects or in this case series data arrays
+        labels: labelData,
+
         series: [
-            seriesData//[5, 2, 4, 2, 0]
+            seriesData
         ]
     };
 
-    //Show an x axis label every n points
-    var n = 4;
+    //Show an x axis gridline every n points
+    var n = 2;
     var options = {
         width: '100%',
         height: 400,
@@ -125,9 +167,5 @@
             }
         }
     };
-
-    // Create a new line chart object where as first parameter we pass in a selector
-    // that is resolving to our chart container element. The Second parameter
-    // is the actual data object. As a third parameter we pass in our custom options.
     new Chartist.Line('.ct-chart', data, options);
 </script>
