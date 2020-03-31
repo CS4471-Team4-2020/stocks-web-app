@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StocksWebApp</name>
+    </assembly>
+    <members>
+        <member name="M:StocksWebApp.Controllers.HomeController.UploadFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Gets the consumer scores by retailer id and return id
+            </summary>
+            <param name="retailerId"></param>
+            <param name="returnId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StocksWebApp.Controllers.TestController.GetByID(System.Int32)">
+            <summary>
+            Retrieve the employee by their ID.
+            </summary>
+            <param name="id">The ID of the desired Employee</param>
+            <returns>A string status</returns>
+        </member>
+    </members>
+</doc>
