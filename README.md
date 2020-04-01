@@ -14,4 +14,9 @@
 - [ ] Migrate the website to my own?
 
 ## API Management
-
+- Provision Users to give them access to specific services
+- Access to the services and their documentation on how to use them
+- Limit the number of calls of a specific endpoint
+- Neat, and documentation of our SOA services
+- View sample input/output. And try it within the browser.
+- Hosted for anyone to easily view.
