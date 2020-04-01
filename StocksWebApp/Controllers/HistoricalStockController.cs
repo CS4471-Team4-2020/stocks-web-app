@@ -60,8 +60,10 @@ namespace StocksWebApp.Controllers
                 EndDate = end
 
             };
-            var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");//new FormUrlEncodedContent(dict);
-            var response = await client.PostAsync("http://localhost:7071/api/Function1", content);
+            var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
+            //var azureFuncString = "http://localhost:7071/api/Function1";
+            var azureFuncString = "https://cs4471-historicalstockservice.azurewebsites.net";
+            var response = await client.PostAsync(azureFuncString, content);
             var responseObj = await response.Content.ReadAsAsync<HistoricalStockViewModel>();
             return responseObj;
         }
