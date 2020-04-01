@@ -20,3 +20,6 @@
 - Neat, and documentation of our SOA services
 - View sample input/output. And try it within the browser.
 - Hosted for anyone to easily view.
+
+## References
+https://resources.sei.cmu.edu/asset_files/TechnicalReport/2010_005_001_15302.pdf
