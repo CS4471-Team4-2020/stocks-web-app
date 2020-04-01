@@ -10,3 +10,4 @@
 - [ ] Figure out what to do for testing
 - [ ] Upload to the correct database
 - [ ] Get API Management working
+- [ ] Migrate the website to my own?
