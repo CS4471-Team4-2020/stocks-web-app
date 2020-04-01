@@ -62,7 +62,7 @@ namespace StocksWebApp.Controllers
             };
             var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
             //var azureFuncString = "http://localhost:7071/api/Function1";
-            var azureFuncString = "https://cs4471-historicalstockservice.azurewebsites.net/api/Function1";
+            var azureFuncString = "https://cs4471-historicalstockservice.azurewebsites.net/api/ProcessData";
             var response = await client.PostAsync(azureFuncString, content);
             var responseObj = await response.Content.ReadAsAsync<HistoricalStockViewModel>();
             return responseObj;
