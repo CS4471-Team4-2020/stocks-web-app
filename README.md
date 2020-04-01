@@ -9,5 +9,9 @@
 - [ ] Export using service bus.
 - [ ] Figure out what to do for testing
 - [ ] Upload to the correct database
-- [ ] Get API Management working
+- [x] Get API Management working
+  - [ ] Add all the APIss
 - [ ] Migrate the website to my own?
+
+## API Management
+
