@@ -11,7 +11,7 @@
 - [ ] Upload to the correct database
 - [x] Get API Management working
   - [ ] Add all the APIss
-- [ ] Migrate the website to my own?
+- [x] Migrate the website to my own?
 - [x] create sample working azure func
 - [x] finish the frontend work for stock performance
 
