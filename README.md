@@ -13,6 +13,7 @@
   - [ ] Add all the APIss
 - [ ] Migrate the website to my own?
 - [x] create sample working azure func
+- [x] finish the frontend work for stock performance
 
 ## API Management
 - Provision Users to give them access to specific services
