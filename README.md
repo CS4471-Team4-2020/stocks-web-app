@@ -24,3 +24,5 @@
 
 ## References
 https://resources.sei.cmu.edu/asset_files/TechnicalReport/2010_005_001_15302.pdf
+
+Table Storage Access: https://www.codeproject.com/Articles/1109980/Working-with-Azure-Storage-Tables-using-Csharp
