@@ -79,7 +79,7 @@ namespace StocksWebApp.Controllers
             };
             var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
             //var azureFuncString = "http://localhost:7071/api/QueryData";
-            var azureFuncString = "https://cs4471-topstockperformerservice.azurewebsites.net/api/Function1";
+            var azureFuncString = "https://cs4471-topstockperformerservice.azurewebsites.net/api/QueryData";
             var response = await client.PostAsync(azureFuncString, content);
             var responseObj = await response.Content.ReadAsAsync<TopStockPerformanceViewModel>();
             return responseObj;
@@ -93,3 +93,4 @@ namespace StocksWebApp.Controllers
         }
 
     }
+}
