@@ -1,98 +1,104 @@
 ﻿@{
     ViewData["Title"] = "Stock Comparison";
 }
-
-
 <style>
-.header { display: inline-block; background-image: url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'); width: 100%; height: 200px; background-size: cover; margin-bottom: 15px; box-shadow: 0px 5px 5px 0px #ccc; }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
 
-        .header h1 {
-            background-color: rgb(255, 255, 255, 0.5);
-            padding: 5px;
-            padding-left: 20px;
-            margin-top: 140px;
-            text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
-        }
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
 </style>
+<h1 style="text-align: center">Stock Comparison</h1>
+
 
 <div class="row">
-    <div class="header">
-        <h1>@ViewData["Title"]</h1>
-    </div>
+    <table class="table table-hover table-dark" style="width:100%;text-align:center">
+        <tr>
+            <th style="text-align:center" colspan="6">Stock Info:</th>
+        </tr>
+        <tbody>
+            <tr>
+                <td>Select:</td>
+                <form action="selectStockDataOne" method="post">
+                    <td>
+                        <input style="text-align:center" type="text" name="nameOfStockOne" placeholder="StockName" />
+                        <input asp-area="" asp-controller="StockComparison" asp-action="CreateOne" style="text-align:center;margin-left:30%" type="submit" value="submit">
 
-</div>
-<div class="row">
-    <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                        Top Stock 1
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse1" class="panel-collapse collapse in">
-                <div class="panel-body">
-                    <h2>TSLA</h2>
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <th>Otto</th>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <th>Thornton</th>
-                                <td>Thornton</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                                <th scope="row">Larry the Bird</th>
-                                <td>Larry the Bird</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    </td>
 
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                        Top Stock 2
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse2" class="panel-collapse collapse">
-                <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat.
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                        Top Stock  3
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse3" class="panel-collapse collapse">
-                <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat.
-                </div>
-            </div>
-        </div>
-    </div>
+                    <td>
+
+                        <input style="text-align:center" type="text" name="nameOfStockTwo" placeholder="StockName" />
+                        <input asp-area="" asp-controller="StockComparison" asp-action="CreateOne" style="text-align:center;margin-left:30%" type="submit" value="submit">
+
+                    </td>
+
+                    <td>
+
+                        <input style="text-align:center" type="text" name="nameOfStockThree" placeholder="StockName" />
+                        <input asp-area="" asp-controller="StockComparison" asp-action="CreateOne" style="text-align:center;margin-left:30%" type="submit" value="submit">
+
+                    </td>
+
+                    <td>
+
+                        <input style="text-align:center" type="text" name="nameOfStockFour" placeholder="StockName" />
+                        <input asp-area="" asp-controller="StockComparison" asp-action="CreateOne" style="text-align:center;margin-left:30%" type="submit" value="submit">
+
+                    </td>
+
+                    <td>
+
+                        <input style="text-align:center" type="text" name="nameOfStockFive" placeholder="StockName" />
+                        <input asp-area="" asp-controller="StockComparison" asp-action="CreateOne" style="text-align:center;margin-left:30%" type="submit" value="submit">
+
+                    </td>
+                </form>
+            </tr>
+            <tr>
+                <td>Name of Stock:</td>
+                <td>@ViewBag.Stockname1</td>
+                <td>@ViewBag.Stockname2</td>
+                <td>@ViewBag.Stockname3</td>
+                <td>@ViewBag.Stockname4</td>
+                <td>@ViewBag.Stockname5</td>
+            </tr>
+            <tr>
+                <td>52 Week Low:</td>
+                <td>@ViewBag.fiftylow1</td>
+                <td>@ViewBag.fiftylow2</td>
+                <td>@ViewBag.fiftylow3</td>
+                <td>@ViewBag.fiftylow4</td>
+                <td>@ViewBag.fiftylow5</td>
+            </tr>
+            <tr>
+                <td>52 Week High:</td>
+                <td>@ViewBag.fiftyhigh1</td>
+                <td>@ViewBag.fiftyhigh2</td>
+                <td>@ViewBag.fiftyhigh3</td>
+                <td>@ViewBag.fiftyhigh4</td>
+                <td>@ViewBag.fiftyhigh5</td>
+            </tr>
+            <tr>
+                <td>Market Capitalization:</td>
+                <td>@ViewBag.marketCap1</td>
+                <td>@ViewBag.marketCap2</td>
+                <td>@ViewBag.marketCap3</td>
+                <td>@ViewBag.marketCap4</td>
+                <td>@ViewBag.marketCap5</td>
+            </tr>
+            <tr>
+                <td>Price to Earning Ratio</td>
+                <td>@ViewBag.priceEarnRatio1 </td>
+                <td>@ViewBag.priceEarnRatio2 </td>
+                <td>@ViewBag.priceEarnRatio3 </td>
+                <td>@ViewBag.priceEarnRatio4 </td>
+                <td>@ViewBag.priceEarnRatio5 </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

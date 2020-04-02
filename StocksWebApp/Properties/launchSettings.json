@@ -25,6 +25,9 @@
     }
   },
   "ConnectionStrings": {
-    "UPLOAD_AZURE_FUNC_APP_URL": ""
+    "UPLOAD_AZURE_FUNC_APP_URL": "",
+    "SUMMARY_AZURE_FUNC_APP_URL": "https://cs4471-stocksummaryandcomparisonservice.azurewebsites.net/api/StockSummary",
+    "COMPARISON_AZURE_FUNC_APP_URL": "https://cs4471-stocksummaryandcomparisonservice.azurewebsites.net/api/StockComparison"
+
   }
 }
