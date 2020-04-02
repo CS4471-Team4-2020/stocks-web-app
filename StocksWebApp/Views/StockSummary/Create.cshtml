@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+ViewData["Title"] = "Create";
+}
+
+    <style>
+
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+    <!--
+    <div>
+        <form action="selectStockData" method="post">
+            <h2 style="font-size:15pt;text-align:center">Please enter the stock company information</h2>
+            <br>
+            <input style="width:20%;margin-right:40%;margin-left:40%;text-align:center" type="text" name="nameOfStock" placeholder="StockName" />
+
+            <br>
+            <br>
+            <input style="width:10%;margin-right:45%;margin-left:45%;text-align:center" type="submit" value="submit">
+        </form>
+
+    </div>
+    -->
+    <h1 style="text-align: center">Stock Summary</h1>
+    <div class="row">
+        <table class="table table-hover table-dark" style="width:100%;text-align:center">
+            <tr>
+                <th style="text-align:center" colspan="2">Stock Info:</th>
+            </tr>
+            <tbody>
+                <tr>
+                    <td>Name of Stock:</td>
+                    <td>@ViewBag.DisplayStock</td>
+                </tr>
+                <tr>
+
+                    <td>52 Week Low:</td>
+                    <td>@ViewBag.lowdata</td>
+                </tr>
+                <tr>
+
+                    <td>52 Week High:</td>
+                    <td>@ViewBag.highdata</td>
+                </tr>
+                <tr>
+                    <td>Market Capitalization:</td>
+                    <td>@ViewBag.marketCap</td>
+                </tr>
+                <tr>
+                    <td>Price to Earning Ratio</td>
+                    <td>@ViewBag.priceEarnRatio</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Stock Comparison";
+}
+<style>
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+</style>
+<h1 style="text-align: center">Stock Comparison</h1>
+
+
+<div class="row">
+    <table class="table table-hover table-dark" style="width:100%;text-align:center">
+        <tr>
+            <th style="text-align:center" colspan="6">Stock Comparison:</th>
+        </tr>
+        <tbody>
+            <tr>
+                <td>Name of Stock:</td>
+                <td>@ViewBag.UsrStockname1</td>
+                <td>@ViewBag.UsrStockname2</td>
+                <td>@ViewBag.UsrStockname3</td>
+                <td>@ViewBag.UsrStockname4</td>
+                <td>@ViewBag.UsrStockname5</td>
+            </tr>
+            <tr>
+                <td>52 Week Low:</td>
+                <td>@ViewBag.Usrfiftylow1</td>
+                <td>@ViewBag.Usrfiftylow2</td>
+                <td>@ViewBag.Usrfiftylow3</td>
+                <td>@ViewBag.Usrfiftylow4</td>
+                <td>@ViewBag.Usrfiftylow5</td>
+            </tr>
+            <tr>
+                <td>52 Week High:</td>
+                <td>@ViewBag.Usrfiftyhigh1</td>
+                <td>@ViewBag.Usrfiftyhigh2</td>
+                <td>@ViewBag.Usrfiftyhigh3</td>
+                <td>@ViewBag.Usrfiftyhigh4</td>
+                <td>@ViewBag.Usrfiftyhigh5</td>
+            </tr>
+            <tr>
+                <td>Market Capitalization:</td>
+                <td>@ViewBag.UsrmarketCap1</td>
+                <td>@ViewBag.UsrmarketCap2</td>
+                <td>@ViewBag.UsrmarketCap3</td>
+                <td>@ViewBag.UsrmarketCap4</td>
+                <td>@ViewBag.UsrmarketCap5</td>
+            </tr>
+            <tr>
+                <td>Price to Earning Ratio</td>
+                <td>@ViewBag.UsrpriceEarnRatio1 </td>
+                <td>@ViewBag.UsrpriceEarnRatio2 </td>
+                <td>@ViewBag.UsrpriceEarnRatio3 </td>
+                <td>@ViewBag.UsrpriceEarnRatio4 </td>
+                <td>@ViewBag.UsrpriceEarnRatio5 </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
