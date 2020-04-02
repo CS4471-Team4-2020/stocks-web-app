@@ -64,7 +64,7 @@ namespace StocksWebApp.Controllers
             var msg = new StockNamesModel();
             msg.stockNames = new List<string>();
 
-            if (!string.IsNullOrWhiteSpace(formCollection["nameOfStockOne"].ToString())){ msg.stockNames.Add(formCollection["nameOfStockOne"].ToString()); }
+            if (!string.IsNullOrWhiteSpace(formCollection["nameOfStockOne"].ToString())) { msg.stockNames.Add(formCollection["nameOfStockOne"].ToString()); }
             if (!string.IsNullOrWhiteSpace(formCollection["nameOfStockTwo"].ToString())) { msg.stockNames.Add(formCollection["nameOfStockTwo"].ToString()); }
             if (!string.IsNullOrWhiteSpace(formCollection["nameOfStockThree"].ToString())) { msg.stockNames.Add(formCollection["nameOfStockThree"].ToString()); }
             if (!string.IsNullOrWhiteSpace(formCollection["nameOfStockFour"].ToString())) { msg.stockNames.Add(formCollection["nameOfStockFour"].ToString()); }
@@ -79,43 +79,90 @@ namespace StocksWebApp.Controllers
             //this view bag should a array/list but im lazy so whatever
             if (stockSummaries.StockSummaries.Count >= 1)
             {
-                StockSummaryInfo info = stockSummaries.StockSummaries.Find(x => string.Compare(x.StockName, formCollection["nameOfStockOne"].ToString()) == 0);
-                ViewBag.Usrfiftylow1 = info.low;
-                ViewBag.Usrfiftyhigh1 = info.high;
-                ViewBag.UsrmarketCap1 = info.marketCap;
-                ViewBag.UsrpriceEarnRatio1 = info.priceToEarnRatio;
+                foreach (StockSummaryInfo element in stockSummaries.StockSummaries)
+                {
+
+
+                    if (element?.StockName != null)
+                    {
+                        if (string.Compare(element.StockName, formCollection["nameOfStockOne"].ToString()) == 0)
+                        {
+                            ViewBag.Usrfiftylow1 = element.low;
+                            ViewBag.Usrfiftyhigh1 = element.high;
+                            ViewBag.UsrmarketCap1 = element.marketCap;
+                            ViewBag.UsrpriceEarnRatio1 = element.priceToEarnRatio;
+                        }
+                    }
+                }
+
             }
             if (stockSummaries.StockSummaries.Count >= 2)
             {
-                StockSummaryInfo info = stockSummaries.StockSummaries.Find(x => string.Compare(x.StockName, formCollection["nameOfStockTwo"].ToString()) == 0);
-                ViewBag.Usrfiftylow2 = info.low;
-                ViewBag.Usrfiftyhigh2 = info.high;
-                ViewBag.UsrmarketCap2 = info.marketCap;
-                ViewBag.UsrpriceEarnRatio2 = info.priceToEarnRatio;
+                foreach (StockSummaryInfo element in stockSummaries.StockSummaries)
+                {
+
+                    if (element != null && element.StockName != null)
+                    {
+                        if (string.Compare(element.StockName, formCollection["nameOfStockTwo"].ToString()) == 0)
+                        {
+                            ViewBag.Usrfiftylow2 = element.low;
+                            ViewBag.Usrfiftyhigh2 = element.high;
+                            ViewBag.UsrmarketCap2 = element.marketCap;
+                            ViewBag.UsrpriceEarnRatio2 = element.priceToEarnRatio;
+                        }
+                    }
+                }
             }
             if (stockSummaries.StockSummaries.Count >= 3)
             {
-                StockSummaryInfo info = stockSummaries.StockSummaries.Find(x => string.Compare(x.StockName, formCollection["nameOfStockThree"].ToString()) == 0);
-                ViewBag.Usrfiftylow3 = info.low;
-                ViewBag.Usrfiftyhigh3 = info.high;
-                ViewBag.UsrmarketCap3 = info.marketCap;
-                ViewBag.UsrpriceEarnRatio3 = info.priceToEarnRatio;
+                foreach (StockSummaryInfo element in stockSummaries.StockSummaries)
+                {
+
+                    if (element != null && element.StockName != null)
+                    {
+                        if (string.Compare(element.StockName, formCollection["nameOfStockThree"].ToString()) == 0)
+                        {
+                            ViewBag.Usrfiftylow3 = element.low;
+                            ViewBag.Usrfiftyhigh3 = element.high;
+                            ViewBag.UsrmarketCap3 = element.marketCap;
+                            ViewBag.UsrpriceEarnRatio3 = element.priceToEarnRatio;
+                        }
+                    }
+                }
             }
             if (stockSummaries.StockSummaries.Count >= 4)
             {
-                StockSummaryInfo info = stockSummaries.StockSummaries.Find(x => string.Compare(x.StockName, formCollection["nameOfStockFour"].ToString()) == 0);
-                ViewBag.Usrfiftylow4 = info.low;
-                ViewBag.Usrfiftyhigh4 = info.high;
-                ViewBag.UsrmarketCap4 = info.marketCap;
-                ViewBag.UsrpriceEarnRatio4 = info.priceToEarnRatio;
+                foreach (StockSummaryInfo element in stockSummaries.StockSummaries)
+                {
+
+                    if (element != null && element.StockName != null)
+                    {
+                        if (string.Compare(element.StockName, formCollection["nameOfStockFour"].ToString()) == 0)
+                        {
+                            ViewBag.Usrfiftylow4 = element.low;
+                            ViewBag.Usrfiftyhigh4 = element.high;
+                            ViewBag.UsrmarketCap4 = element.marketCap;
+                            ViewBag.UsrpriceEarnRatio4 = element.priceToEarnRatio;
+                        }
+                    }
+                }
             }
             if (stockSummaries.StockSummaries.Count >= 5)
             {
-                StockSummaryInfo info = stockSummaries.StockSummaries.Find(x => string.Compare(x.StockName, formCollection["nameOfStockFive"].ToString()) == 0);
-                ViewBag.Usrfiftylow5 = info.low;
-                ViewBag.Usrfiftyhigh5 = info.high;
-                ViewBag.UsrmarketCap5 = info.marketCap;
-                ViewBag.UsrpriceEarnRatio5 = info.priceToEarnRatio;
+                foreach (StockSummaryInfo element in stockSummaries.StockSummaries)
+                {
+
+                    if (element != null && element.StockName != null)
+                    {
+                        if (string.Compare(element.StockName, formCollection["nameOfStockFive"].ToString()) == 0)
+                        {
+                            ViewBag.Usrfiftylow5 = element.low;
+                            ViewBag.Usrfiftyhigh5 = element.high;
+                            ViewBag.UsrmarketCap5 = element.marketCap;
+                            ViewBag.UsrpriceEarnRatio5 = element.priceToEarnRatio;
+                        }
+                    }
+                }
             }
 
             return View();
